@@ -17,3 +17,4 @@
 /public/assets/*
 .DS_Store
 .env
+/vendor/assets/bower_components
