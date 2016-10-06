@@ -6,15 +6,20 @@ app.config([
 	function($stateProvider, $urlRouterProvider) {
 		$stateProvider
 			.state('home', {
+				resolve: {
+					postPromise: ['posts', function(posts) {
+						return posts.getAll();
+					}]
+				},
 				url: '/home',
 				templateUrl: 'home/_home.html',
 				controller: 'MainCtrl'
-		})
-		.state('post', {
-			url: '/posts/{id}',
-			templateUrl: 'posts/_posts.html',
-			controller: 'PostCtrl'
-		});
+			})
+			.state('post', {
+				url: '/posts/{id}',
+				templateUrl: 'posts/_posts.html',
+				controller: 'PostCtrl'
+			});
 		$urlRouterProvider.otherwise('home');
 	}
 ]);
