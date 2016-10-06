@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
 	def upvote
 		comment = @post.comments.find(params[:id])
 		comment.increment!(:upvotes)
-		respond_with post, comment
+		respond_with @post, comment
 	end
 
 	private
