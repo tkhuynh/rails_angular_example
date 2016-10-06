@@ -3,6 +3,6 @@ class Comment < ActiveRecord::Base
   belongs_to :post
 
   def default_upvotes
-		sefl.upvotes ||= 0
+		self.upvotes ||= 0
 	end
 end

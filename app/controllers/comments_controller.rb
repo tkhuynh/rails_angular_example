@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
 
 	def create
 		comment = @post.comments.create(comment_params)
-		respond_with post, comment
+		respond_with @post, comment
 	end
 
 	def upvote
