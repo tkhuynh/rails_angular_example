@@ -1,19 +1,17 @@
 <div class="page-header">
-  <h3>
+  <h3>{{post.title}}</h3>
+  <p>
     <a ng-show="post.link" href="{{post.link}}">
-      {{post.title}}
+      Read article
     </a>
     <span ng-hide="post.link">
-      {{post.title}}
+      Read article
     </span>
-    <span>
-      <a href="#/posts/{{$index}}">Comments</a>
-    </span>
-  </h3>
+  </p>
 </div>
 
 <div ng-repeat="comment in post.comments | orderBy:'-upvotes'">
-  <span class="glyphicon glyphicon-thumbs-up"
+  <span class="glyphicon glyphicon-thumbs-up upvote"
     ng-click="incrementUpvotes(comment)"></span>
   {{comment.upvotes}} - by {{comment.author}}
   <span style="font-size:20px; margin-left:10px;">
@@ -26,10 +24,10 @@ style="margin-top:30px;">
   <h3>Add a new comment</h3>
 
   <div class="form-group">
-    <input type="text"
-    class="form-control"
-    placeholder="Comment"
-    ng-model="body"></input>
+    <textarea class="form-control" rows="3" placeholder="Enter Commnet here" ng-model="body"></textarea>
   </div>
-  <button type="submit" class="btn btn-primary">Post</button>
+  <button type="submit" class="btn btn-primary">Comment</button>
+  <button type="button" class= "btn btn-default" ng-click="clearComment()">Cancel</button>
 </form>
+<br>
+<a href="javascript:void(0)" ng-click="home()"><<< back</a>
