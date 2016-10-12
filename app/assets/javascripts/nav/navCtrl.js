@@ -4,6 +4,8 @@ app.controller('NavCtrl', ['$scope', 'Auth', function($scope, Auth) {
 
   Auth.currentUser().then(function (user){
     $scope.user = user;
+  }, function(error) {
+    console.log(error);
   });
 
   $scope.$on('devise:new-registration', function (e, user){
