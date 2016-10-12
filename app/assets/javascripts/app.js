@@ -1,5 +1,11 @@
 var app = angular.module('flapperNews', ['ui.router', 'templates', 'Devise']);
 
+app.filter('capitalize', function() {
+	return function(input) {
+		return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
+	};
+});
+
 app.config([
 	'$stateProvider',
 	'$urlRouterProvider',
