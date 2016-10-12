@@ -4,7 +4,8 @@
 
 <div ng-repeat="post in posts | orderBy:'-upvotes'">
   <h3>{{post.title}}</h3>
-
+  posted by <a ng-href="#/users/{{post.user.username}}">{{post.user.username}}</a>
+  <br>
   <span class="glyphicon glyphicon-thumbs-up upvote" ng-click="incrementUpvotes(post)"></span>
   {{post.upvotes}}
   <span style="margin-left:10px;">

@@ -1,10 +1,11 @@
 class Post < ActiveRecord::Base
 	before_save :default_upvotes, :prepend_http
-	has_many :comments
+	belongs_to :user
+	has_many :comments, dependent: :destroy
 
-	def as_json(options ={})
-		super(options.merge(include: :comments))
-	end
+	def as_json(options = {})
+    super(options.merge(include: [:user, comments: {include: :user}]))
+  end
 
 	def default_upvotes
 		self.upvotes ||= 0

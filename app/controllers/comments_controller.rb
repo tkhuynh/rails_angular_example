@@ -1,8 +1,9 @@
 class CommentsController < ApplicationController
+	before_action :authenticate_user!, only: [:create, :upvote]
 	before_action :get_post
 
 	def create
-		comment = @post.comments.create(comment_params)
+		comment = @post.comments.create(comment_params.merge(user_id: current_user.id))
 		respond_with @post, comment
 	end
 

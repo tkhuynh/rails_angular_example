@@ -11,12 +11,13 @@
 </div>
 
 <div ng-repeat="comment in post.comments | orderBy:'-upvotes'">
-  <span class="glyphicon glyphicon-thumbs-up upvote"
-    ng-click="incrementUpvotes(comment)"></span>
-  {{comment.upvotes}} - by {{comment.author}}
-  <span style="font-size:20px; margin-left:10px;">
+  <span style="font-size:16px;">
     {{comment.body}}
   </span>
+  <br>
+  <span class="glyphicon glyphicon-thumbs-up upvote"
+    ng-click="incrementUpvotes(comment)"></span>
+  {{comment.upvotes}} - by {{comment.user.username}}
 </div>
 
 <form ng-submit="addComment()"

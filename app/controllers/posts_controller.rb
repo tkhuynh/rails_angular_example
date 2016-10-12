@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+	before_action :authenticate_user!, only: [:create, :upvote]
 	before_action :get_post, only: [:show, :upvote]
 
 	def index
@@ -10,7 +11,7 @@ class PostsController < ApplicationController
 	end
 
 	def create
-		respond_with Post.create(post_params)
+		respond_with Post.create(post_params.merge(user_id: current_user.id))
 	end
 
 	def upvote
